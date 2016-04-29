@@ -2,7 +2,7 @@
 
 # Fish-nvm
 
-nvm wrapper for Fish Shell
+nvm wrapper for fish-shell.
 
 ## Install
 
@@ -12,7 +12,7 @@ With [fisherman]
 fisher nvm
 ```
 
-Make sure you have [nvm] installed first
+Make sure you have [nvm] installed first.
 
 ## Usage
 
@@ -29,14 +29,13 @@ If you don't use the .nvmrc file or you don't set a a default version you will h
 
 If you have a custom $NVM_DIR, please add the following line to your ~/.config/fish/config.fish, replacing the path accordingly:
 
-```bash
+```fish
 set -gx NVM_DIR /path/to/nvm
 ```
 
-### PS
-Checkout [fin] a pure fish node version manager
+## Other
 
-This plugin was inspired on [omf-nvm]
+Check out [fin] a pure fish node version manager with automatic version switching.
 
 [slack-link]: https://fisherman-wharf.herokuapp.com
 [slack-badge]: https://fisherman-wharf.herokuapp.com/badge.svg
