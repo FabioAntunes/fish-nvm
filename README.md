@@ -35,7 +35,7 @@ set -gx NVM_DIR /path/to/nvm
 
 ## Other
 
-Check out also [**fnm**] a pure fish node version manager with automatic version switching.
+Check out also **[fnm]** a pure fish node version manager with automatic version switching.
 
 [slack-link]: https://fisherman-wharf.herokuapp.com
 [slack-badge]: https://fisherman-wharf.herokuapp.com/badge.svg
