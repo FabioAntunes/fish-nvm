@@ -20,9 +20,9 @@ function __nvm_run
 
     switch $argv[1]
     case npm
-      command npm $args
+      complete -C command npm $args
     case node
-      command node $args
+      complete -C command node $args
     end
   end
 
