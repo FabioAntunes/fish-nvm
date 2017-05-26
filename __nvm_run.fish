@@ -24,15 +24,17 @@ function __nvm_run
 
   function run_default
     nvm use default
-    if __nvm_can_run $argv[1]
+    set -g NVM_HAS_RUN 1
+    if __can_run_command $argv[1]
       run_command $argv
     end
   end
 
-  if not __nvm_can_run $argv[1]
+  if not test -n "$NVM_HAS_RUN"
     if test -f .nvmrc; and nvm use > /dev/null 2>&1
 
-      if __nvm_can_run $argv[1]
+      if __can_run_command $argv[1]
+        set -g NVM_HAS_RUN 1
         run_command $argv
       else
         run_default $argv
