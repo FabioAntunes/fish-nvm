@@ -7,5 +7,7 @@ function nvm
   set -g nvm_prefix $NVM_DIR
   
   bass source $nvm_prefix/nvm.sh --no-use ';' nvm $argv
-  set -g NVM_HAS_RUN 1
+  if test $argv[1] = "use"; or test $argv[1] = "install"
+    set -g NVM_HAS_RUN 1
+  end
 end
