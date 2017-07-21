@@ -17,8 +17,58 @@ Make sure you have [NVM] installed first.
 ## Usage
 
 ```fish
-nvm install 5.0.0
-nvm alias default 5.0.0
+nvm install 6.11.1
+nvm alias default 6.11.1
+```
+
+## How it works
+
+The way this plugin works is delaying sourcing nvm, until we really need it. That way we don't have those annoying 1/2 seconds of delay every time we open a new terminal window/tab.
+
+There are a couple of alias already created. They will source NVM whenever you call them:
+* npm
+* yarn
+* node
+* nvm
+
+What this means is that if you depend on other node global packages, let's say `gulp`, if you try to run `gulp` in a fresh window/tab you will get something like `Command unknown`.
+One way to solve this is running `nvm use default`, or any of the alias before using the command `gulp`.
+
+Since that's far from great, especially if you depend a lot on these global packages you can easily create your own function inside `~/.config/fish/functions`, so for `gulp` would be something like this:
+
+```
+function gulp -d -w gulp
+  __nvm_run "gulp" $argv
+end
+```
+
+Another common scenario is if you need to have the binary of the node available. For example if you are vim user, some plugins need access to the node binary.
+Since we only source nvm when we use one of the alias, you will probably get an error saying that node isn't available. A simple solution would be creating a binary manually and put it somewhere on your PATH.
+
+For example to create a binary for `node` we could create a file under `/usr/local/bin`
+
+```
+touch `/usr/local/bin/node`
+```
+
+Open that file on your editor and paste the following:
+
+```
+#! /usr/bin/env fish
+
+__nvm_run "node" $argv
+```
+
+Make that file executable:
+
+```
+chmod +x /usr/local/bin/node
+```
+
+Test it
+
+```
+which node
 ```
 
 ## Please read these Notes:

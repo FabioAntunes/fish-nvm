@@ -15,7 +15,8 @@ function __nvm_run
     end
 
     if type -fqP $argv[1]
-      eval (type -fP $argv[1]) $args
+      # https://stackoverflow.com/questions/45237675/proxying-arguments-from-one-function-to-a-command/45238056#45238056
+      eval (string escape -- (type -fP $argv[1]) $args)
     else
       echo (set_color -o)"Fish nvm:"(set_color normal) "'$argv[1]' is currently not installed, try running npm i -g $argv[1]"
       return 1
@@ -23,7 +24,7 @@ function __nvm_run
   end
 
   function run_default
-    nvm use default
+    nvm use default > /dev/null
     set -g NVM_HAS_RUN 1
     if __can_run_command $argv[1]
       run_command $argv
