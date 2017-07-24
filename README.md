@@ -30,6 +30,7 @@ There are a couple of alias already created. They will source NVM whenever you c
 * yarn
 * node
 * nvm
+* npx
 
 What this means is that if you depend on other node global packages, let's say `gulp`, if you try to run `gulp` in a fresh window/tab you will get something like `Command unknown`.
 One way to solve this is running `nvm use default`, or any of the alias before using the command `gulp`.
