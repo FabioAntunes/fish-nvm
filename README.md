@@ -44,26 +44,19 @@ end
 ```
 
 Another common scenario is if you need to have the binary of the node available. For example if you are vim user, some plugins need access to the node binary.
-Since we only source nvm when we use one of the alias, you will probably get an error saying that node isn't available. A simple solution would be creating a binary manually and put it somewhere on your PATH.
+Since we only source nvm when we use one of the alias, you will probably get an error saying that node isn't available.
+We have provided an easy way to get around this.
 
-For example to create a binary for `node` we could create a file under `/usr/local/bin`
-
-```
-touch `/usr/local/bin/node`
-```
-
-Open that file on your editor and paste the following:
+Navigate to where `fisherman/nvm` is installed, for instance:
 
 ```
-#! /usr/bin/env fish
-
-__nvm_run "node" $argv
+cd ~/.config/fisherman/nvm
 ```
 
-Make that file executable:
+Run `./symlink-scripts` with a destination that is in your PATH, for instance:
 
 ```
-chmod +x /usr/local/bin/node
+./symlink-scripts /usr/local/bin
 ```
 
 Test it
