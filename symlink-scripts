@@ -11,21 +11,26 @@ end
 
 set -l scriptPaths (command ls -1 (realpath (status --current-filename)"/../scripts")/*) # gets those scripts' absolute paths
 
-set -l destination $argv[1]
+set -l destination (echo $argv[1] | string replace -r '/$' '') # remove trailing slash for aesthetic reasons
 
 if not test -d $destination
-  echo "$destination is not a directory."
+  set_color red
+  echo "ERROR: $destination is not a directory." 1>&2
+  set_color normal
   exit 2
 end
 
 for scriptOriginalPath in $scriptPaths
   set -l scriptName (basename $scriptOriginalPath)
-  set -l symlinkFilepath (realpath "$destination/$scriptName")
-  echo "$symlinkFilepath -> $scriptOriginalPath"
+  set -l symlinkFilepath  "$destination/$scriptName"
+  set_color red # ln only prints stuff if it fails so we can set it red
   ln -s $scriptOriginalPath $symlinkFilepath
   if test $status -ne 0
-    set_color red
     echo "WARNING: failed to symlink $scriptName" 1>&2
+  else
     set_color normal
+    echo "$symlinkFilepath -> $scriptOriginalPath"
   end
 end
+
+set_color normal
