@@ -8,7 +8,7 @@ nvm wrapper for fish-shell.
 
 With [fisherman]
 
-```
+```fish
 fisher nvm
 ```
 
@@ -37,7 +37,7 @@ One way to solve this is running `nvm use default`, or any of the alias before u
 
 Since that's far from great, especially if you depend a lot on these global packages you can easily create your own function inside `~/.config/fish/functions`, so for `gulp` would be something like this:
 
-```
+```fish
 function gulp -d -w gulp
   __nvm_run "gulp" $argv
 end
@@ -49,19 +49,19 @@ We have provided an easy way to get around this.
 
 Navigate to where `fisherman/nvm` is installed, for instance:
 
-```
+```fish
 cd ~/.config/fisherman/nvm
 ```
 
 Run `./symlink-scripts` with a destination that is in your PATH, for instance:
 
-```
+```fish
 ./symlink-scripts /usr/local/bin
 ```
 
 Test it
 
-```
+```fish
 which node
 ```
 
