@@ -28,7 +28,7 @@ for scriptOriginalPath in $scriptPaths
   if test $status -ne 0
     echo "WARNING: failed to symlink $scriptName" 1>&2
   else
-    set_color normal
+    set_color green
     echo "$symlinkFilepath -> $scriptOriginalPath"
   end
 end
