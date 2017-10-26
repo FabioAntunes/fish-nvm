@@ -1,0 +1,31 @@
+#!/usr/bin/env fish
+
+if test (count $argv) -lt 1
+  echo "Please specify a directory to symlink into by using:
+> ./symlink-scripts <directory>
+
+For example:
+> ./symlink-scripts /usr/local/bin"
+  exit 1
+end
+
+set -l scriptPaths (command ls -1 (realpath (status --current-filename)"/../scripts")/*) # gets those scripts' absolute paths
+
+set -l destination $argv[1]
+
+if not test -d $destination
+  echo "$destination is not a directory."
+  exit 2
+end
+
+for scriptOriginalPath in $scriptPaths
+  set -l scriptName (basename $scriptOriginalPath)
+  set -l symlinkFilepath (realpath "$destination/$scriptName")
+  echo "$symlinkFilepath -> $scriptOriginalPath"
+  ln -s $scriptOriginalPath $symlinkFilepath
+  if test $status -ne 0
+    set_color red
+    echo "WARNING: failed to symlink $scriptName"
+    set_color normal
+  end
+end
