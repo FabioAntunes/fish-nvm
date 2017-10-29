@@ -1,0 +1,2 @@
+#!/usr/bin/env fish
+__nvm_run "node" $argv

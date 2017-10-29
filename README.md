@@ -8,7 +8,7 @@ nvm wrapper for fish-shell.
 
 With [fisherman]
 
-```
+```fish
 fisher nvm
 ```
 
@@ -37,38 +37,31 @@ One way to solve this is running `nvm use default`, or any of the alias before u
 
 Since that's far from great, especially if you depend a lot on these global packages you can easily create your own function inside `~/.config/fish/functions`, so for `gulp` would be something like this:
 
-```
+```fish
 function gulp -d -w gulp
   __nvm_run "gulp" $argv
 end
 ```
 
 Another common scenario is if you need to have the binary of the node available. For example if you are vim user, some plugins need access to the node binary.
-Since we only source nvm when we use one of the alias, you will probably get an error saying that node isn't available. A simple solution would be creating a binary manually and put it somewhere on your PATH.
+Since we only source nvm when we use one of the alias, you will probably get an error saying that node isn't available.
+We have provided an easy way to get around this.
 
-For example to create a binary for `node` we could create a file under `/usr/local/bin`
+Navigate to where `fisherman/nvm` is installed, for instance:
 
-```
-touch `/usr/local/bin/node`
-```
-
-Open that file on your editor and paste the following:
-
-```
-#! /usr/bin/env fish
-
-__nvm_run "node" $argv
+```fish
+cd ~/.config/fisherman/nvm
 ```
 
-Make that file executable:
+Run `./symlink-scripts` with a destination that is in your PATH, for instance:
 
-```
-chmod +x /usr/local/bin/node
+```fish
+./symlink-scripts /usr/local/bin
 ```
 
 Test it
 
-```
+```fish
 which node
 ```
 
