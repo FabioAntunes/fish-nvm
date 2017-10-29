@@ -1,6 +1,6 @@
 [![Slack Room][slack-badge]][slack-link]
 
-# Fish-nvm
+# fish-nvm
 
 nvm wrapper for fish-shell.
 
@@ -56,13 +56,13 @@ Since we only source nvm when we use one of the alias, you will probably get an 
 
 For example to create a binary for `node` we could create a file under `/usr/local/bin`
 
-```
+```fish
 touch `/usr/local/bin/node`
 ```
 
 Open that file on your editor and paste the following:
 
-```
+```fish
 #! /usr/bin/env fish
 
 __nvm_run "node" $argv
@@ -70,13 +70,13 @@ __nvm_run "node" $argv
 
 Make that file executable:
 
-```
+```fish
 chmod +x /usr/local/bin/node
 ```
 
 Test it
 
-```
+```fish
 which node
 ```
 

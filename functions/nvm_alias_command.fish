@@ -21,6 +21,10 @@ function nvm_alias_command -d "Create an alias command"
       set -l template "__nvm_run \"COMMAND\" \$argv"
       echo '#!/usr/bin/env fish' > $argv[1]
       echo (string replace COMMAND $argv[2] $template) >> $argv[1]
+      set_color green
+      echo "Success: $argv[2] alias command was created at $argv[1]"
+      set_color normal
+
       return (chmod +x $argv[1])
     end
   end
