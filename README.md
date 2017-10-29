@@ -38,31 +38,62 @@ One way to solve this is running `nvm use default`, or any of the alias before u
 Since that's far from great, especially if you depend a lot on these global packages you can easily create your own function inside `~/.config/fish/functions`, so for `gulp` would be something like this:
 
 ```fish
-function gulp -d -w gulp
+function gulp -d "gulp task manager" -w gulp
   __nvm_run "gulp" $argv
 end
 ```
 
-Another common scenario is if you need to have the binary of the node available. For example if you are vim user, some plugins need access to the node binary.
-Since we only source nvm when we use one of the alias, you will probably get an error saying that node isn't available.
-We have provided an easy way to get around this.
-
-Navigate to where `fisherman/nvm` is installed, for instance:
+To simplify this process there's an helper function on `fish-nvm` just run `nvm_alias_function name`, you can pass multiple packages names, separated by spaces:
 
 ```fish
-cd ~/.config/fisherman/nvm
+nvm_alias_function gulp webpack grunt
 ```
 
-Run `./symlink-scripts` with a destination that is in your PATH, for instance:
+This will create 3 functions on your functions folder `~/.config/fish/functions`
 
-```fish
-./symlink-scripts /usr/local/bin
+Another common scenario is if you need to have the binary of the node or package available. For example if you are vim user, some plugins need access to the node binary.
+Since we only source nvm when we use one of the alias, you will probably get an error saying that node isn't available.
+
+For example to create a binary for `node` we could create a file under `/usr/local/bin`
+
+```
+touch `/usr/local/bin/node`
+```
+
+Open that file on your editor and paste the following:
+
+```
+#! /usr/bin/env fish
+
+__nvm_run "node" $argv
+```
+
+Make that file executable:
+
+```
+chmod +x /usr/local/bin/node
 ```
 
 Test it
 
-```fish
+```
 which node
+```
+
+To simplify this process there's another helper function `nvm_alias_command`
+
+If you run `nvm_alias_command` without any arguments it will create the alias binaries provided by default by `fish-nvm`: `npm`, `node`, `npx`, `yarn`
+
+To create additional ones just pass them as arguments separated by spaces
+
+```fish
+nvm_alias_command eslint prettier
+```
+
+The default output path is `/urs/local/bin`, to change the output folder just set a global variable:
+
+```fish
+set -g nvm_alias_output /other/path
 ```
 
 ## Please read these Notes:
