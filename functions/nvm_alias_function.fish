@@ -8,7 +8,7 @@ function nvm_alias_function -d "Create an alias function"
     else
       set -l line1 "function COMMAND -w COMMAND"
       set -l line2 "__nvm_run \"COMMAND\" \$argv"
-      echo (string replace COMMAND $argv[2] $line1) > $argv[1]
+      echo (string replace -a COMMAND $argv[2] $line1) > $argv[1]
       echo (string replace COMMAND $argv[2] $line2) >> $argv[1]
       echo "end" >> $argv[1]
       return 0

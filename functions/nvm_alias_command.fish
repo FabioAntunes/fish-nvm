@@ -1,6 +1,5 @@
 function nvm_alias_command -d "Create an alias command"
-  set -l outputPath (__nvm_alias_output)
-  set -l path (string replace nvm_alias.fish '' (status --current-filename))
+  set -l path (string replace nvm_alias_command.fish '' (status --current-filename))
   set -l aliases (command ls -1 (realpath $path))
 
   function __nvm_alias_output
@@ -29,9 +28,13 @@ function nvm_alias_command -d "Create an alias command"
     end
   end
 
+  set -l outputPath (__nvm_alias_output)
   if test (count $argv) -le 0
     for val in $aliases
-      if test "nvm.fish" != $val; and test "nvm_alias.fish" != $val
+      if test $val != "nvm.fish";
+        and test $val != "nvm_alias_command.fish";
+        and test $val != "nvm_alias_function.fish"
+
         set -l alias (string replace .fish '' $val)
         __create_alias_command "$outputPath/$alias" $alias
       end
