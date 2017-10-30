@@ -25,6 +25,8 @@ nvm alias default 6.11.1
 
 The way this plugin works is delaying sourcing nvm, until we really need it. That way we don't have those annoying 1/2 seconds of delay every time we open a new terminal window/tab.
 
+![fish nvm example](/../readme-images/nvm.gif?raw=true)
+
 There are a couple of alias already created. They will source NVM whenever you call them:
 * npm
 * yarn
@@ -48,6 +50,8 @@ To simplify this process there's an helper function on `fish-nvm` just run `nvm_
 ```fish
 nvm_alias_function gulp webpack grunt
 ```
+
+![fish nvm example](/../readme-images/nvm_alias_function.gif?raw=true)
 
 This will create 3 functions on your functions folder `~/.config/fish/functions`
 
@@ -83,6 +87,8 @@ which node
 To simplify this process there's another helper function `nvm_alias_command`
 
 If you run `nvm_alias_command` without any arguments it will create the alias binaries provided by default by `fish-nvm`: `npm`, `node`, `npx`, `yarn`
+
+![fish nvm example](/../readme-images/nvm_alias_command.gif?raw=true)
 
 To create additional ones just pass them as arguments separated by spaces
 
