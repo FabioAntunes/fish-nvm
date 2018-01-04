@@ -8,6 +8,12 @@ function nvm
   
   bass source $nvm_prefix/nvm.sh --no-use ';' nvm $argv
 
+  set bstatus $status
+
+  if test $bstatus -gt 0
+    return $bstatus
+  end
+
   if test (count $argv) -lt 1
     return 0
   end
