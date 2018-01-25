@@ -117,6 +117,9 @@ If you have a custom `$NVM_DIR`, please add the following line to your `~/.confi
 set -gx NVM_DIR /path/to/nvm
 ```
 
+**NOTE:** DO NOT use a trailing slash in `NVM_DIR` variable.
+Adding it will cause error: `nvm is not compatible with the npm config "prefix" option`
+
 ## Other
 
 Check out also **[fnm]** a pure fish node version manager with automatic version switching.
