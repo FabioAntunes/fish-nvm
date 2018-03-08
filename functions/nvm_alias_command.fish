@@ -18,17 +18,22 @@ function nvm_alias_command -d "Create an alias command"
       return 0
     else
       set -l template "__nvm_run \"COMMAND\" \$argv"
-      echo '#!/usr/bin/env fish' > $argv[1]
-      echo (string replace COMMAND $argv[2] $template) >> $argv[1]
-      set_color green
-      echo "Success: $argv[2] alias command was created at $argv[1]"
-      set_color normal
-
-      return (chmod +x $argv[1])
+      printf "#!/usr/bin/env fish\n%s\n" (string replace COMMAND $argv[2] $template) > $argv[1]
+      if test $status -eq 0
+        printf "\U2705   %s alias command was created at %s\n" $argv[2] $argv[1]
+        return (chmod +x $argv[1])
+      end
     end
   end
 
   set -l outputPath (__nvm_alias_output)
+  mkdir -p $outputPath
+
+  if test $status -ge 1
+    printf "\U274C    failed creating dir $outputPath.\nProbably a permissions problem, try running sudo fish nvm_alias_command\n"
+    exit 1
+  end
+
   if test (count $argv) -le 0
     for val in $aliases
       if test $val != "nvm.fish";
