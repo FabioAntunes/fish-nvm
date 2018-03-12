@@ -1,5 +1,5 @@
 function nvm_alias_command -d "Create an alias command"
-  set -l path (string replace nvm_alias_command.fish '' (status --current-filename))
+  set -l path ( dirname (readlink -m (status --current-filename)))
   set -l aliases (command ls -1 (realpath $path))
 
   function __nvm_alias_output
