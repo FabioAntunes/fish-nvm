@@ -117,7 +117,19 @@ If you have a custom `$NVM_DIR`, please add the following line to your `~/.confi
 set -gx NVM_DIR /path/to/nvm
 ```
 
-**NOTE:** DO NOT use a trailing slash in `NVM_DIR` variable.
+
+Also, if you have a custom installation path but still set `$NVM_DIR` to default path. For example this could happen if you install [NVM] using [brew], which would install nvm into: `/usr/local/Cellar/nvm/%nvm_version%/nvm.sh`
+
+If that is the case you add the following line to your `~/.config/fish/config.fish`, replacing the path accordingly:
+
+```fish
+set -gx nvm_prefix /path/to/nvm
+```
+
+
+**NOTE:**
+
+**DO NOT** use a trailing slash in `NVM_DIR` variable.
 Adding it will cause error: `nvm is not compatible with the npm config "prefix" option`
 
 ## Other
@@ -129,3 +141,4 @@ Check out also **[fnm]** a pure fish node version manager with automatic version
 [fisherman]: https://github.com/fisherman/fisherman
 [NVM]: https://github.com/creationix/nvm
 [fnm]: https://github.com/fisherman/fnm
+[brew]: https://brew.sh/
