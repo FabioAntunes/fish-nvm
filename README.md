@@ -25,6 +25,8 @@ nvm alias default 6.11.1
 
 The way this plugin works is delaying sourcing nvm, until we really need it. That way we don't have those annoying 1/2 seconds of delay every time we open a new terminal window/tab.
 
+By delaying the sourcing of nvm **YOUR NODE BINARIES WON'T BE LOADED** until you source nvm or run one of the following alias. If you want to source nvm every single time you open a terminal just use [bass](https://github.com/edc/bass#nvm)
+
 ![fish nvm example](/../readme-images/nvm.gif?raw=true)
 
 There are a couple of alias already created. They will source NVM whenever you call them:
