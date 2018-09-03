@@ -63,7 +63,7 @@ Since we only source nvm when we use one of the alias, you will probably get an 
 For example to create a binary for `node` we could create a file under `/usr/local/bin`
 
 ```fish
-touch `/usr/local/bin/node`
+touch /usr/local/bin/node
 ```
 
 Open that file on your editor and paste the following:
