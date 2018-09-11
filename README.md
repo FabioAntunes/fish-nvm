@@ -1,5 +1,3 @@
-[![Slack Room][slack-badge]][slack-link]
-
 # fish-nvm
 
 nvm wrapper for fish-shell.
@@ -9,7 +7,12 @@ nvm wrapper for fish-shell.
 With [fisherman]
 
 ```fish
-fisher nvm
+fisher FabioAntunes/fish-nvm
+```
+
+With omf
+```fish
+fisher https://github.com/FabioAntunes/fish-nvm
 ```
 
 Make sure you have [NVM] installed first.
