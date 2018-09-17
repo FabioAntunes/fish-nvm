@@ -95,13 +95,19 @@ If you run `nvm_alias_command` without any arguments it will create the alias bi
 
 ![fish nvm example](/../readme-images/nvm_alias_command.gif?raw=true)
 
-To create additional ones just pass them as arguments separated by spaces
+To create additional ones after running the first time without args, just pass them as arguments separated by spaces
 
 ```fish
 nvm_alias_command eslint prettier
 ```
 
-The default output path is `/urs/local/bin`, to change the output folder just set a global variable:
+The default output path is `/urs/local/bin`, if you get erros message due to permissions, try running with sudo permissions:
+
+```fish
+sudo fish nvm_alias_command eslint prettier
+```
+
+To change the default output folder just set a global variable:
 
 ```fish
 set -g nvm_alias_output /other/path
