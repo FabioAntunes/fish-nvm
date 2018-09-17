@@ -1,7 +1,4 @@
 function nvm_alias_command -d "Create an alias command"
-  set -l path ( dirname (readlink -m (status --current-filename)))
-  set -l aliases (command ls -1 (realpath $path))
-
   function __nvm_alias_output
     if test -z "$nvm_alias_output"
       echo "/usr/local/bin"
@@ -22,6 +19,8 @@ function nvm_alias_command -d "Create an alias command"
       if test $status -eq 0
         printf "\U2705   %s alias command was created at %s\n" $argv[2] $argv[1]
         return (chmod +x $argv[1])
+      else
+        printf "\U274C failed creating  %s alias command at %s\n" $argv[2] $argv[1]
       end
     end
   end
@@ -30,11 +29,14 @@ function nvm_alias_command -d "Create an alias command"
   mkdir -p $outputPath
 
   if test $status -ge 1
-    printf "\U274C    failed creating dir $outputPath.\nProbably a permissions problem, try running sudo fish nvm_alias_command\n"
+    printf "\U274C failed creating dir $outputPath.\nProbably a permissions problem, try running sudo fish nvm_alias_command\n"
     exit 1
   end
 
   if test (count $argv) -le 0
+    set -l path ( dirname (readlink (status --current-filename)))
+    set -l aliases (command ls -1 (realpath $path))
+
     for val in $aliases
       if test $val != "nvm.fish";
         and test $val != "nvm_alias_command.fish";
