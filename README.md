@@ -101,7 +101,7 @@ To create additional ones after running the first time without args, just pass t
 nvm_alias_command eslint prettier
 ```
 
-The default output path is `/urs/local/bin`, if you get erros message due to permissions, try running with sudo permissions:
+The default output path is `/urs/local/bin`, if you get an error message due to permissions, try running with sudo permissions:
 
 ```fish
 sudo fish nvm_alias_command eslint prettier
