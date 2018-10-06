@@ -10,12 +10,15 @@ With [fisherman]
 fisher FabioAntunes/fish-nvm
 ```
 
-With omf
+With [oh-my-fish]
 ```fish
-fisher https://github.com/FabioAntunes/fish-nvm
+omf install https://github.com/FabioAntunes/fish-nvm
+omf install https://github.com/edc/bass
 ```
 
 Make sure you have [NVM] installed first.
+
+**fish-nvm** depends on [bass] 
 
 ## Usage
 
@@ -153,3 +156,9 @@ Check out also **[fnm]** a pure fish node version manager with automatic version
 [NVM]: https://github.com/creationix/nvm
 [fnm]: https://github.com/fisherman/fnm
 [brew]: https://brew.sh/
+[oh-my-fish]: https://github.com/oh-my-fish/oh-my-fish
+[bass]: https://github.com/edc/bass
+
+### License
+
+fish-nvm is [MIT licensed](./LICENSE.md).
