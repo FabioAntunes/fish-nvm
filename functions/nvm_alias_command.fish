@@ -21,6 +21,7 @@ function nvm_alias_command -d "Create an alias command"
         return (chmod +x $argv[1])
       else
         printf "\U274C failed creating  %s alias command at %s\n" $argv[2] $argv[1]
+        printf "Probably a permissions problem, try running sudo fish and then nvm_alias_command\n"
       end
     end
   end
@@ -29,7 +30,8 @@ function nvm_alias_command -d "Create an alias command"
   mkdir -p $outputPath
 
   if test $status -ge 1
-    printf "\U274C failed creating dir $outputPath.\nProbably a permissions problem, try running sudo fish nvm_alias_command\n"
+    printf "\U274C failed creating dir $outputPath."
+    printf "Probably a permissions problem, try running sudo fish and then nvm_alias_command\n"
     exit 1
   end
 
