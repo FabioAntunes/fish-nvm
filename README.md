@@ -4,10 +4,10 @@ nvm wrapper for fish-shell.
 
 ## Install
 
-With [fisherman]
+With [fisher](https://github.com/jorgebucaran/fisher)
 
 ```fish
-fisher FabioAntunes/fish-nvm
+fisher add FabioAntunes/fish-nvm
 ```
 
 With [oh-my-fish]
@@ -150,9 +150,6 @@ Adding it will cause error: `nvm is not compatible with the npm config "prefix" 
 
 Check out also **[fnm]** a pure fish node version manager with automatic version switching.
 
-[slack-link]: https://fisherman-wharf.herokuapp.com
-[slack-badge]: https://fisherman-wharf.herokuapp.com/badge.svg
-[fisherman]: https://github.com/fisherman/fisherman
 [NVM]: https://github.com/creationix/nvm
 [fnm]: https://github.com/fisherman/fnm
 [brew]: https://brew.sh/
