@@ -23,19 +23,26 @@ function __nvm_run
     end
   end
 
+  function can_run_command
+    if type -P $argv[1] > /dev/null 2>&1; or type -P node > /dev/null 2>&1
+      return
+    else
+      return 1
+    end
+  end
+
   function run_default
     nvm use default > /dev/null
-    set -g NVM_HAS_RUN 1
-    if __can_run_command $argv[1]
+    set -gx NVM_HAS_RUN 1
+    if can_run_command $argv[1]
       run_command $argv
     end
   end
 
   if not test -n "$NVM_HAS_RUN"
     if test -f .nvmrc; and nvm use > /dev/null 2>&1
-
-      if __can_run_command $argv[1]
-        set -g NVM_HAS_RUN 1
+      if can_run_command $argv[1]
+        set -gx NVM_HAS_RUN 1
         run_command $argv
       else
         run_default $argv

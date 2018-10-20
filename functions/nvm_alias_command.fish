@@ -43,8 +43,7 @@ function nvm_alias_command -d "Create an alias command"
       if test $val != "nvm.fish";
         and test $val != "nvm_alias_command.fish";
         and test $val != "nvm_alias_function.fish";
-        and test $val != "__nvm_run.fish";
-        and test $val != "__can_run_command.fish"
+        and test $val != "__nvm_run.fish"
 
         set -l alias (string replace .fish '' $val)
         __create_alias_command "$outputPath/$alias" $alias
