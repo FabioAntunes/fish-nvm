@@ -36,7 +36,7 @@ function nvm_alias_command -d "Create an alias command"
   end
 
   if test (count $argv) -le 0
-    set -l path ( dirname (readlink (status --current-filename)))
+    set -l path ( dirname (readlink -f (status --current-filename)))
     set -l aliases (command ls -1 (realpath $path))
 
     for val in $aliases
