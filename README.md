@@ -8,6 +8,7 @@ With [fisher](https://github.com/jorgebucaran/fisher)
 
 ```fish
 fisher add FabioAntunes/fish-nvm
+fisher add edc/bass
 ```
 
 With [oh-my-fish]
