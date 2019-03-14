@@ -16,8 +16,15 @@ function __nvm_run
     end
 
     if type -fqP $argv[1]; and test "$stack[1]" != (which $argv[1])
-      # https://stackoverflow.com/questions/45237675/proxying-arguments-from-one-function-to-a-command/45238056#45238056
-      eval (string escape -- (type -fP $argv[1]) $args)
+      set count (count $argv)
+      if test "$count" -ge 2
+        set args $argv[2..-1]
+
+        # https://stackoverflow.com/questions/45237675/proxying-arguments-from-one-function-to-a-command/45238056#45238056
+        eval (string escape -- (type -fP $argv[1]) $args)
+      else
+        eval (string escape -- (type -fP $argv[1]))
+      end
     else
       echo (set_color -o)"Fish nvm:"(set_color normal) "'$argv[1]' is currently not installed, try running npm i -g $argv[1]"
       return 1
