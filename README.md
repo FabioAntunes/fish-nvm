@@ -147,12 +147,7 @@ set -gx nvm_prefix /path/to/nvm
 **DO NOT** use a trailing slash in `NVM_DIR` variable.
 Adding it will cause error: `nvm is not compatible with the npm config "prefix" option`
 
-## Other
-
-Check out also **[fnm]** a pure fish node version manager with automatic version switching.
-
 [NVM]: https://github.com/creationix/nvm
-[fnm]: https://github.com/fisherman/fnm
 [brew]: https://brew.sh/
 [oh-my-fish]: https://github.com/oh-my-fish/oh-my-fish
 [bass]: https://github.com/edc/bass
