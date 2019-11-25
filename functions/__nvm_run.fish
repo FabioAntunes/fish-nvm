@@ -6,6 +6,14 @@ function __nvm_run
     return 1
   end
 
+  if test (uname -s) = 'Darwin'; and string match -q "*versions/node/*/bin" $PATH
+    set -l nvm_node_path (string match "*versions/node/*/bin" $PATH)
+    set -l nvm_index (contains -i -- $nvm_node_path $PATH)
+    if test $nvm_index -gt 1
+      set -gx PATH $nvm_node_path (string match -v $nvm_node_path $PATH)
+    end
+  end
+
   function run_command
     set stack (status stack-trace | grep called | cut -d " " -f 7)
     set count (count $argv)
