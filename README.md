@@ -4,6 +4,8 @@ nvm wrapper for fish-shell.
 
 ## Install
 
+Make sure you have [NVM] installed first.
+
 With [fisher](https://github.com/jorgebucaran/fisher)
 
 ```fish
@@ -16,8 +18,6 @@ With [oh-my-fish]
 omf install https://github.com/FabioAntunes/fish-nvm
 omf install https://github.com/edc/bass
 ```
-
-Make sure you have [NVM] installed first.
 
 **fish-nvm** depends on [bass] 
 
