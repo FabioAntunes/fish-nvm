@@ -21,7 +21,7 @@ function nvm_alias_command -d "Create an alias command"
         return (chmod +x $argv[1])
       else
         printf "\U274C failed creating  %s alias command at %s\n" $argv[2] $argv[1]
-        printf "Probably a permissions problem, try running sudo fish and then nvm_alias_command\n"
+        printf "Probably a permissions problem, try running sudo fish, and then nvm_alias_command\n"
       end
     end
   end
@@ -31,23 +31,15 @@ function nvm_alias_command -d "Create an alias command"
 
   if test $status -ge 1
     printf "\U274C failed creating dir $outputPath."
-    printf "Probably a permissions problem, try running sudo fish and then nvm_alias_command\n"
+    printf "Probably a permissions problem, try running sudo fish, and then nvm_alias_command\n"
     exit 1
   end
 
   if test (count $argv) -le 0
-    set -l path ( dirname (readlink -f (status --current-filename)))
-    set -l aliases (command ls -1 (realpath $path))
+    set -l aliases node npm npx yarn
 
-    for val in $aliases
-      if test $val != "nvm.fish";
-        and test $val != "nvm_alias_command.fish";
-        and test $val != "nvm_alias_function.fish";
-        and test $val != "__nvm_run.fish"
-
-        set -l alias (string replace .fish '' $val)
+    for alias in $aliases
         __create_alias_command "$outputPath/$alias" $alias
-      end
     end
   else
     for arg in $argv
