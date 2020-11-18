@@ -1,43 +1,18 @@
 # fish-nvm
 
-[NVM] wrapper for fish-shell.
+[NVM] wrapper for [Fish](https://fishshell.com/).
 
 ## Install
 
 Make sure you have [NVM] installed first.
 
-### With [fisher]
+### With [Fisher]
+
+> **fish-nvm** depends on [bass].
 
 ```fish
-fisher add FabioAntunes/fish-nvm
-fisher add edc/bass
+fisher install edc/bass FabioAntunes/fish-nvm 
 ```
-
-### With [oh-my-fish]
-
-```fish
-omf install https://github.com/fabioantunes/fish-nvm
-omf install https://github.com/edc/bass
-```
-
-### With [fundle]
-
-```fish
-fundle plugin 'FabioAntunes/fish-nvm'
-fundle plugin 'edc/bass'
-fundle install
-```
-
-Add these lines to `~/.config/fish/config.fish`
-
-```fish
-fundle plugin 'FabioAntunes/fish-nvm'
-fundle plugin 'edc/bass'
-fundle init
-```
-
-
-**fish-nvm** depends on [bass] 
 
 ## Usage
 
@@ -172,8 +147,6 @@ Adding it will cause error: `nvm is not compatible with the npm config "prefix" 
 [NVM]: https://github.com/creationix/nvm
 [brew]: https://brew.sh/
 [fisher]: https://github.com/jorgebucaran/fisher
-[oh-my-fish]: https://github.com/oh-my-fish/oh-my-fish
-[fundle]: https://github.com/danhper/fundle
 [bass]: https://github.com/edc/bass
 
 ### License
