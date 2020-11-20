@@ -170,7 +170,7 @@ Adding it will cause error: `nvm is not compatible with the npm config "prefix" 
 
 [NVM]: https://github.com/creationix/nvm
 [brew]: https://brew.sh/
-[fisher]: https://github.com/jorgebucaran/fisher
+[Fisher]: https://github.com/jorgebucaran/fisher
 [oh-my-fish]: https://github.com/oh-my-fish/oh-my-fish
 [fundle]: https://github.com/danhper/fundle
 [bass]: https://github.com/edc/bass
