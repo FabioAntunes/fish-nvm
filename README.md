@@ -6,11 +6,10 @@
 
 Make sure you have [NVM] installed first.
 
-### With [fisher]
+### With [Fisher]
 
 ```fish
-fisher install FabioAntunes/fish-nvm
-fisher install edc/bass
+fisher install FabioAntunes/fish-nvm edc/bass
 ```
 
 ### With [oh-my-fish]
