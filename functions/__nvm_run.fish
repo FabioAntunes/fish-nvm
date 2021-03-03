@@ -18,7 +18,7 @@ function __nvm_run
     set stack (status stack-trace | grep called | cut -d " " -f 7)
     set count (count $argv)
 
-    if type -fqP $argv[1]; and test "$stack[1]" != (which $argv[1])
+    if type -fq $argv[1]; and test "$stack[1]" != (which $argv[1])
       set count (count $argv)
       if test "$count" -ge 2
         set args $argv[2..-1]
