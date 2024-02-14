@@ -1,6 +1,7 @@
-# fish-nvm
+# nvm-fish-wrapper
 
-[NVM] wrapper for fish-shell.
+[NVM] wrapper for fish-shell. Forked from Fabio Antunes's [repo](https://github.com/FabioAntunes/fish-nvm).
+Added corepack and pnpm support.
 
 ## Install
 
@@ -9,20 +10,20 @@ Make sure you have [NVM] installed first.
 ### With [Fisher]
 
 ```fish
-fisher install FabioAntunes/fish-nvm edc/bass
+fisher install szpolny/nvm-fish-wrapper edc/bass
 ```
 
 ### With [oh-my-fish]
 
 ```fish
-omf install https://github.com/fabioantunes/fish-nvm
+omf install https://github.com/szpolny/nvm-fish-wrapper
 omf install https://github.com/edc/bass
 ```
 
 ### With [fundle]
 
 ```fish
-fundle plugin 'FabioAntunes/fish-nvm'
+fundle plugin 'szpolny/nvm-fish-wrapper'
 fundle plugin 'edc/bass'
 fundle install
 ```
@@ -30,13 +31,13 @@ fundle install
 Add these lines to `~/.config/fish/config.fish`
 
 ```fish
-fundle plugin 'FabioAntunes/fish-nvm'
+fundle plugin 'szpolny/nvm-fish-wrapper'
 fundle plugin 'edc/bass'
 fundle init
 ```
 
 
-**fish-nvm** depends on [bass] 
+**nvm-fish-wrapper** depends on [bass] 
 
 ## Usage
 
@@ -59,6 +60,8 @@ There are a couple of aliases already created. These will source [NVM] whenever 
 * node
 * nvm
 * npx
+* pnpm
+* corepack
 
 What this means is that if you depend on other node global packages, let's say `gulp`, if you try to run `gulp` in a new window/tab you will get something like `Command unknown`.
 One way to solve this is running `nvm use default`, or any of the aliases before using the command `gulp`. If you primarily depend on these global packages, that's far from great.
@@ -118,7 +121,6 @@ If you run `nvm_alias_command` without any arguments it will create the followin
 - `npx`
 - `yarn`
 
-![fish nvm example](/../readme-images/nvm_alias_command.gif?raw=true)
 
 To create additional aliases, you can pass them as arguments separated by spaces
 
@@ -174,6 +176,8 @@ Adding it will cause error: `nvm is not compatible with the npm config "prefix" 
 [oh-my-fish]: https://github.com/oh-my-fish/oh-my-fish
 [fundle]: https://github.com/danhper/fundle
 [bass]: https://github.com/edc/bass
+
+Forked from: https://github.com/FabioAntunes/fish-nvm
 
 ### License
 
